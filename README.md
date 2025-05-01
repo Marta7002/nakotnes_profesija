@@ -1,1 +1,2 @@
-# nakotnes_profesija
+Projekts "Kāda ir Tava nākotnes profesija" tika izveidots, lai palīdzētu dažāda vecuma skolēniem noteikt sev piemēroto nākotnes frofesijas nozari, kā arī, lai veicinātu pārdomas par dažādiem jautājumiem, kas saistīti ar profesiju.
+Piemērots dažādu klašu skolēniem, lai interaktīvi palīdzētu ar profesijas izvēli, pārliecinātu, ka jau izvēlētā profesija atbilst visiem kritērijiem (vēlmēm, prasmēm, iespējām).

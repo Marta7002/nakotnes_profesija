@@ -1,21 +1,21 @@
 import tkinter as tk
 from PIL import Image, ImageTk
 
-class NakotnesProfesija:   #tiek definēta klase
-    def __init__(self, root):   #tiek definēti galvenie parametri
+class NakotnesProfesija:
+    def __init__(self, root):   #galveno logu
         self.root = root
-        self.root.title("Viktorīna: Tava nākotnes profesija")
-        self.root.geometry("600x600")
-        self.root.configure(bg="#dbe9f4")
-        self.root.resizable(False, False)
+        self.root.title("Viktorīna: Tava nākotnes profesija")   #loga virsraksts
+        self.root.geometry("600x600")   #loga izmērs
+        self.root.configure(bg="#dbe9f4")   #loga krāsa
+        self.root.resizable(False, False)   #nosaka, ka loga izmēru nevarēs mainīt
 
-        try:   #tiek atvērts attēls
-            self.image = Image.open("Profesijas.png")
-            self.photo = ImageTk.PhotoImage(self.image)
+        try:
+            self.image = Image.open("Profesijas.png")   #atver attēlu
+            self.photo = ImageTk.PhotoImage(self.image)   #pārveido attēlu
         except Exception:
-            self.photo = None   #ja nevar atrast attēlu, tas netiek ievietots
-#jautājumu un atbilžu saraksts
-        self.jaut = [
+            self.photo = None   #ja nevar ielādēt attēlu, tas neparādās
+
+        self.jaut = [   #saraksts ar visiem jautājumiem un atbildēm
             {"jaut": "Kāds priekšmets tev skolā patīk vislabāk?", "answers": ["Bioloģija", "Matemātika", "Ekonomika", "Māksla"]},
             {"jaut": "Kas tevi visvairāk raksturo?", "answers": ["Palīdzēt citiem", "Risināt problēmas", "Uzņemties vadību", "Izpaust radošumu"]},
             {"jaut": "Kur tu labprātāk strādātu?", "answers": ["Slimnīcā", "Tehnoloģiju uzņēmumā", "Savā uzņēmumā", "Radošā studijā"]},
@@ -32,66 +32,66 @@ class NakotnesProfesija:   #tiek definēta klase
             {"jaut": "Ko tu visbiežāk dari komandā?", "answers": ["Palīdzu un atbalstu", "Radu risinājumus", "Vadu un koordinēju", "Piedāvāju idejas"]},
             {"jaut": "Kāda vērtība tev ir vissvarīgākā?", "answers": ["Palīdzība", "Inovācija", "Brīvība", "Izpausme"]}
         ]
-#mērāmie rezultāti
+
         self.nozares = {
             "Medicīna": 0,
             "Inženierija": 0,
             "Uzņēmējdarbība": 0,
             "Māksla": 0
-        }
+        }   #saglabā puktus katrai kategorijai
 
-        self.jaut_index = 0   #sākuma jautājuma indekss
+        self.jaut_index = 0   #saglabā jautājuma indeksu
 
-        self.frame = None  #attēlos saturu
-        self.create_sakums()    #tiek izsaukts sākuma ekrāns
+        self.frame = tk.Frame(self.root)   #izveido saturu
+        self.frame.pack_forget()  #sākotnēji to nerāda
 
-    def create_sakums(self):   #izveido sākuma logu
-        
-        if self.frame is not None:
-            self.frame.destroy()  #vecais rāmis tiek iznīcināts
-        self.frame = tk.Frame(self.root)
-        self.frame.pack(fill=tk.BOTH, expand=True)    #pievienots rāmis logam
+        self.create_sakums()   #parāda sākuma ekrānu
 
-        if self.photo:   #parādīts attēls
+    def reset_frame(self):
+        self.frame.destroy()   #noņem iepriekšējo saturu
+        self.frame = tk.Frame(self.root, bg="#dbe9f4")   #izveido jaunu saturu
+        self.frame.pack(fill=tk.BOTH, expand=True)   #aizpilda logu
+
+    def create_sakums(self):
+        self.reset_frame()   #attīra logu
+
+        if self.photo:   #ja ir attēls - to parāda
             img_label = tk.Label(self.frame, image=self.photo, bg="#dbe9f4")
             img_label.pack(pady=10)
-#spēles nosaukums
-        nosaukums = tk.Label(self.frame, text="Kāda ir Tava nākotnes profesija?", font=("Helvetica", 22, "bold"),
-                             fg="#12355b", bg="#dbe9f4")
-        nosaukums.pack(pady=20)
-#poga spēles sākumam
-        sakuma = tk.Button(self.frame, text="Sākt", command=self.show_question,
-                           font=("Helvetica", 16, "bold"), bg="#1976D2", fg="white", width=20)
-        sakuma.pack(pady=20)
-#parāda nākamo jautājumu un atbildes
-    def show_question(self):
-        if self.jaut_index < len(self.jaut):   #pārbauda vai ir jāuzdod vēl jautājumi
-            if self.frame is not None:
-                self.frame.destroy()  #vecais rāmis iznīcināts
-            self.frame = tk.Frame(self.root)   
-            self.frame.pack(fill=tk.BOTH, expand=True)   #jauns rāmis
 
-            jaut = self.jaut[self.jaut_index]   #jautājums
-#jautājumu nummurs
-            jaut_nr = tk.Label(self.frame, text=f"Jautājums {self.jaut_index + 1} no {len(self.jaut)}",
-                               font=("Helvetica", 12, "bold"), bg="#dbe9f4", fg="#12355b")
+        nosaukums = tk.Label(self.frame, text="Kāda ir Tava nākotnes profesija?", font=("Arial", 22, "bold"),   #virsraksts
+                             fg="#12355b", bg="orange")
+        nosaukums.pack(pady=20)
+
+        sakuma = tk.Button(self.frame, text="Sākt", command=self.show_question,   #sākma poga
+                           font=("Arial", 16, "bold"), bg="#1976D2", fg="white", width=20)
+        sakuma.pack(pady=20)
+
+    def show_question(self):
+        if self.jaut_index < len(self.jaut):   #ja ir atlikuši vēl jautājumi
+            self.reset_frame()   #notīra ekrānu
+            jaut = self.jaut[self.jaut_index]  #parāda nākamo jautājumu
+
+            jaut_nr = tk.Label(self.frame, text=f"Jautājums {self.jaut_index + 1} no {len(self.jaut)}",   #rāda jautājuma numuru
+                               font=("Arial", 12, "bold"), bg="#dbe9f4", fg="#12355b")
             jaut_nr.pack(pady=(10, 0))
-#jautājums
-            jaut_label = tk.Label(self.frame, text=jaut["jaut"], font=("Helvetica", 16, "bold"),
-                                  bg="#dbe9f4", fg="#12355b", wraplength=550)
+
+            jaut_label = tk.Label(self.frame, text=jaut["jaut"], font=("Arial", 16, "bold"),   #jautājuma teksts
+                                  bg="orange", fg="#12355b", wraplength=550)
             jaut_label.pack(pady=10)
-#atbilžu pogas
-            for idx, answer in enumerate(jaut["answers"]):
-                answer_btn = tk.Button(self.frame, text=answer, font=("Helvetica", 12), bg="#64B5F6", fg="white", width=40,
+
+            for idx in range(len(jaut["answers"])):   #pogas katrai atbildei
+                answer = jaut["answers"][idx]
+                answer_btn = tk.Button(self.frame, text=answer, font=("Arial", 12), bg="#64B5F6", fg="white", width=40,
                                        command=lambda idx=idx: self.answer(idx))
                 answer_btn.pack(pady=5)
-#parādīts attēls
-            if self.photo:
+
+            if self.photo:   #attēls pie katra jautājuma
                 img_label = tk.Label(self.frame, image=self.photo, bg="#dbe9f4")
                 img_label.pack(pady=10)
         else:
-            self.show_result()   #ja vairs nav jautājumu rāda rezultātu
-#apstrādā atbildi un pāriet tālāk
+            self.show_result()   #ja vairs jautājumu nav, rāda rezultātu
+
     def answer(self, idx):
         if idx == 0:
             self.nozares["Medicīna"] += 1
@@ -102,37 +102,44 @@ class NakotnesProfesija:   #tiek definēta klase
         elif idx == 3:
             self.nozares["Māksla"] += 1
 
-        self.jaut_index += 1   #palielina jautājumu skaitu
+        self.jaut_index += 1   #pāriet uz nākamo jautājumu
         self.show_question()   #rāda nākamo jautājumu
-#parāda rezultātu
+
     def show_result(self):
-        if self.frame is not None:
-            self.frame.destroy()  #iznīcina veco rāmi
-        self.frame = tk.Frame(self.root)
-        self.frame.pack(fill=tk.BOTH, expand=True)
+        self.reset_frame()   #notīra ekrānu
 
-        best_field = max(self.nozares, key=self.nozares.get)   #atrod nozari, pie kuras ir visvairāk punktu
-#rezultāta paziņojums
-        result_label = tk.Label(self.frame, text=f"Tava nākotnes profesijas joma ir: {best_field}",
-                                font=("Helvetica", 18, "bold"), fg="#2e7d32", bg="#dbe9f4")
-        result_label.pack(pady=30)
+        max_punkti = max(self.nozares.values())   #nosaka augstāko punktu skaitu
+        piemerotakie = [nozare for nozare, punkti in self.nozares.items() if punkti == max_punkti]
 
-        descriptions = {   #iespējamie komentāri
+        komentari = {   #komentāri katrai profesijai
             "Medicīna": "Tava līdzjūtība un rūpes par citiem liecina, ka būtu lielisks medicīnas speciālists!",
             "Inženierija": "Tava loģiskā domāšana un precizitāte rāda, ka inženierija ir Tavs aicinājums!",
             "Uzņēmējdarbība": "Tava uzņēmība un vadītprasmes palīdzēs Tev gūt panākumus biznesā!",
             "Māksla": "Tava radošā daba un iztēle ved Tevi uz mākslas pasauli!"
         }
-#rezultāta apraksts
-        result_desc_label = tk.Label(self.frame, text=descriptions[best_field], font=("Helvetica", 14),
-                                     bg="#dbe9f4", fg="#333333", wraplength=550)
-        result_desc_label.pack(pady=20)
-#parāda attēlu
-        if self.photo:
+
+        if len(piemerotakie) == 1:
+            nozare = piemerotakie[0]
+            result_text = f"Tava nākotnes profesijas joma ir: {nozare}"
+            kom_teksts = komentari[nozare]
+        else:   #ja ir vairākas profesijas ar augstāko punktu skaitu
+            result_text = "Tavas nākotnes profesijas jomas ir: " + " un ".join(piemerotakie)   #rezultāta virsraksts
+            kom_teksts = "Tu esi daudzpusīgs! Tavā priekšā ir daudz iespēju – izvēlies sev sirdij tuvāko!"   #komentārs
+
+        result_label = tk.Label(self.frame, text=result_text, font=("Arial", 18, "bold"),   #rezultāta virsraksts
+                                fg="#12355b", bg="orange", wraplength=550)
+        result_label.pack(pady=30)
+
+        result_kom_label = tk.Label(self.frame, text=kom_teksts,   #komentārs
+                                    font=("Arial", 14), bg="#dbe9f4", fg="#333333", wraplength=550)
+        result_kom_label.pack(pady=20)
+
+        if self.photo:   #parāda attēlu
             img_label = tk.Label(self.frame, image=self.photo, bg="#dbe9f4")
+            img_label.image = self.photo  # Saglabā attēlu, lai tas netiktu izdzēsts
             img_label.pack(pady=10)
 
-# programmas starts
+# startē programmu
 root = tk.Tk()
 app = NakotnesProfesija(root)
 root.mainloop()
