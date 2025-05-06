@@ -16,21 +16,21 @@ class NakotnesProfesija:
             self.photo = None   #ja nevar ielādēt attēlu, tas neparādās
 
         self.jaut = [   #saraksts ar visiem jautājumiem un atbildēm
-            {"jaut": "Kāds priekšmets tev skolā patīk vislabāk?", "answers": ["Bioloģija", "Matemātika", "Ekonomika", "Māksla"]},
-            {"jaut": "Kas tevi visvairāk raksturo?", "answers": ["Palīdzēt citiem", "Risināt problēmas", "Uzņemties vadību", "Izpaust radošumu"]},
-            {"jaut": "Kur tu labprātāk strādātu?", "answers": ["Slimnīcā", "Tehnoloģiju uzņēmumā", "Savā uzņēmumā", "Radošā studijā"]},
-            {"jaut": "Kuru aktivitāti tu izvēlētos brīvajā laikā?", "answers": ["Pētīt veselības jautājumus", "Būvēt robotus", "Organizēt pasākumus", "Zīmēt vai gleznot"]},
-            {"jaut": "Kas tevi visvairāk motivē?", "answers": ["Glābt dzīvības", "Radīt jaunas tehnoloģijas", "Gūt panākumus", "Izpaust emocijas"]},
-            {"jaut": "Kā tu parasti risini problēmas?", "answers": ["Meklēju palīdzību un informāciju", "Izstrādāju tehnisku risinājumu", "Plānoju stratēģiju", "Izmantoju radošu pieeju"]},
-            {"jaut": "Kāda veida filmas tev patīk?", "answers": ["Medicīnas drāmas", "Zinātniskā fantastika", "Biogrāfijas par uzņēmējiem", "Mākslas filmas"]},
-            {"jaut": "Kāds ir tavs sapņu darbs?", "answers": ["Ārsts", "Inženieris", "Uzņēmējs", "Mākslinieks"]},
-            {"jaut": "Kas tev padodas vislabāk?", "answers": ["Klausīties cilvēkus", "Domāt loģiski", "Pārliecināt citus", "Radīt ko jaunu"]},
-            {"jaut": "Ko tu vēlētos izdarīt pasaules labā?", "answers": ["Uzlabot veselības aprūpi", "Izgudrot ko noderīgu", "Palīdzēt cilvēkiem kļūt veiksmīgākiem", "Iedvesmot ar mākslu"]},
-            {"jaut": "Kādā vidē tu jūties vislabāk?", "answers": ["Slimnīcā", "Laboratorijā", "Birojā", "Studijā"]},
-            {"jaut": "Kāda ir tava lielākā stiprā puse?", "answers": ["Empātija", "Analītiskā domāšana", "Vadītprasmes", "Radošums"]},
-            {"jaut": "Kuru profesiju tu esi ieinteresēts izpētīt?", "answers": ["Mediķis", "Inženieris", "Vadītājs", "Dizaineris"]},
-            {"jaut": "Ko tu visbiežāk dari komandā?", "answers": ["Palīdzu un atbalstu", "Radu risinājumus", "Vadu un koordinēju", "Piedāvāju idejas"]},
-            {"jaut": "Kāda vērtība tev ir vissvarīgākā?", "answers": ["Palīdzība", "Inovācija", "Brīvība", "Izpausme"]}
+            {"jaut": "Kāds priekšmets tev skolā patīk vislabāk?", "atbildes": ["Bioloģija", "Matemātika", "Ekonomika", "Māksla"]},
+            {"jaut": "Kas tevi visvairāk raksturo?", "atbildes": ["Palīdzēt citiem", "Risināt problēmas", "Uzņemties vadību", "Izpaust radošumu"]},
+            {"jaut": "Kur tu labprātāk strādātu?", "atbildes": ["Slimnīcā", "Tehnoloģiju uzņēmumā", "Savā uzņēmumā", "Radošā studijā"]},
+            {"jaut": "Kuru aktivitāti tu izvēlētos brīvajā laikā?", "atbildes": ["Pētīt veselības jautājumus", "Būvēt robotus", "Organizēt pasākumus", "Zīmēt vai gleznot"]},
+            {"jaut": "Kas tevi visvairāk motivē?", "atbildes": ["Glābt dzīvības", "Radīt jaunas tehnoloģijas", "Gūt panākumus", "Izpaust emocijas"]},
+            {"jaut": "Kā tu parasti risini problēmas?", "atbildes": ["Meklēju palīdzību un informāciju", "Izstrādāju tehnisku risinājumu", "Plānoju stratēģiju", "Izmantoju radošu pieeju"]},
+            {"jaut": "Kāda veida filmas tev patīk?", "atbildes": ["Medicīnas drāmas", "Zinātniskā fantastika", "Biogrāfijas par uzņēmējiem", "Mākslas filmas"]},
+            {"jaut": "Kāds ir tavs sapņu darbs?", "atbildes": ["Ārsts", "Inženieris", "Uzņēmējs", "Mākslinieks"]},
+            {"jaut": "Kas tev padodas vislabāk?", "atbildes": ["Klausīties cilvēkus", "Domāt loģiski", "Pārliecināt citus", "Radīt ko jaunu"]},
+            {"jaut": "Ko tu vēlētos izdarīt pasaules labā?", "atbildes": ["Uzlabot veselības aprūpi", "Izgudrot ko noderīgu", "Palīdzēt cilvēkiem kļūt veiksmīgākiem", "Iedvesmot ar mākslu"]},
+            {"jaut": "Kādā vidē tu jūties vislabāk?", "atbildes": ["Slimnīcā", "Laboratorijā", "Birojā", "Studijā"]},
+            {"jaut": "Kāda ir tava lielākā stiprā puse?", "atbildes": ["Empātija", "Analītiskā domāšana", "Vadītprasmes", "Radošums"]},
+            {"jaut": "Kuru profesiju tu esi ieinteresēts izpētīt?", "atbildes": ["Mediķis", "Inženieris", "Vadītājs", "Dizaineris"]},
+            {"jaut": "Ko tu visbiežāk dari komandā?", "atbildes": ["Palīdzu un atbalstu", "Radu risinājumus", "Vadu un koordinēju", "Piedāvāju idejas"]},
+            {"jaut": "Kāda vērtība tev ir vissvarīgākā?", "atbildes": ["Palīdzība", "Inovācija", "Brīvība", "Izpausme"]}
         ]
 
         self.nozares = {
@@ -72,7 +72,7 @@ class NakotnesProfesija:
             self.reset_frame()   #notīra ekrānu
             jaut = self.jaut[self.jaut_index]  #parāda nākamo jautājumu
 
-            jaut_nr = tk.Label(self.frame, text=f"Jautājums {self.jaut_index + 1} no {len(self.jaut)}",   #rāda jautājuma numuru
+            jaut_nr = tk.Label(self.frame, text=f"{self.jaut_index + 1}. no {len(self.jaut)} jautājumiem",   #rāda jautājuma numuru
                                font=("Arial", 12, "bold"), bg="#dbe9f4", fg="#12355b")
             jaut_nr.pack(pady=(10, 0))
 
@@ -80,8 +80,8 @@ class NakotnesProfesija:
                                   bg="orange", fg="#12355b", wraplength=550)
             jaut_label.pack(pady=10)
 
-            for idx in range(len(jaut["answers"])):   #pogas katrai atbildei
-                answer = jaut["answers"][idx]
+            for idx in range(len(jaut["atbildes"])):   #pogas katrai atbildei
+                answer = jaut["atbildes"][idx]
                 answer_btn = tk.Button(self.frame, text=answer, font=("Arial", 12), bg="#64B5F6", fg="white", width=40,
                                        command=lambda idx=idx: self.answer(idx))
                 answer_btn.pack(pady=5)
@@ -136,10 +136,10 @@ class NakotnesProfesija:
 
         if self.photo:   #parāda attēlu
             img_label = tk.Label(self.frame, image=self.photo, bg="#dbe9f4")
-            img_label.image = self.photo  # Saglabā attēlu, lai tas netiktu izdzēsts
+            img_label.image = self.photo  #saglabā attēlu, lai tas netiktu izdzēsts
             img_label.pack(pady=10)
 
-# startē programmu
+#startē programmu
 root = tk.Tk()
 app = NakotnesProfesija(root)
 root.mainloop()
